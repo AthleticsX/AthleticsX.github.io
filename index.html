@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v5.9.17, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="assets/images/photo-1607962837359-5e7e89f86776.jpeg" type="image/x-icon">
   <meta name="description" content="AthleticsX makes sports recruitment easier for coaches and athletes by providing in-depth broadcaster level analysis for each player’s game video using AI and Computer Vision.">
@@ -475,7 +474,7 @@
 
 				<div class="text-wrapper align-left" data-form-type="formoid">
 					<!--Formbuilder Form-->
-					<form action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST" class="mbr-form form-with-styler" data-form-title="Join Form">
+					<form id="registration-form" action="https://script.google.com/macros/s/AKfycbwGyEEGrbq9MdtkWEPBQnTr-Sg5Nv4wc6wCd7QrSMloUyngQDCg7LDlzf64BG8_NTKlOg/exec" method="POST" class="mbr-form form-with-styler" data-form-title="Join Form">
     <!-- Name Field -->
     <div class="row">
         <div class="col-12 form-group">
@@ -553,8 +552,55 @@
         </div>
     </div>
 </section>
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/embla/embla.min.js"></script>  <script src="assets/embla/script.js"></script>  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
-  
-  
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Thank You</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Thank you for showing your interest, we'll connect with you soon!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+document.getElementById('registration-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    var formData = new FormData(this);
+
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(html => {
+        // Show the Bootstrap modal on success
+        var thankYouModal = new bootstrap.Modal(document.getElementById('thankYouModal'), {});
+	thankYouModal.show();
+
+        // Reset the form fields after showing the modal
+        this.reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("There was an error submitting the form.");
+    });
+});
+
+</script>
+
+
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/embla/embla.min.js"></script>  <script src="assets/embla/script.js"></script>  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>
+
 </body>
 </html>
