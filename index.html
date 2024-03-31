@@ -708,6 +708,23 @@ document.getElementById('registration-form').addEventListener('submit', function
 });
 
 </script>
+<script>
+// Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize the Embla Carousel for the "Enhancing Coaching and Recruitment" section
+    var emblaNode = document.querySelector('.features017.mbr-embla .embla');
+    var options = { loop: true, speed: 4, draggable: true };
+    var embla = EmblaCarousel(emblaNode, options);
+
+    // Previous and Next button functionality
+    var prevButton = document.querySelector('.features017.mbr-embla .embla__button--prev');
+    var nextButton = document.querySelector('.features017.mbr-embla .embla__button--next');
+
+    prevButton.addEventListener('click', embla.scrollPrev, false);
+    nextButton.addEventListener('click', embla.scrollNext, false);
+});
+</script>
+
 
 
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  <script src="assets/parallax/jarallax.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/ytplayer/index.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/embla/embla.min.js"></script>  <script src="assets/embla/script.js"></script>  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>
